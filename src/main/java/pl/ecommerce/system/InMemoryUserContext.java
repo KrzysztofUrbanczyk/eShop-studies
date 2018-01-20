@@ -1,11 +1,14 @@
 package pl.ecommerce.system;
 
 public class InMemoryUserContext implements UserContext {
-    public void authorize(String userId) {
 
+    private CurrentUser authorizedUser;
+
+    public void authorize(String userId) {
+        this.authorizedUser = new CurrentUser(userId);
     }
 
     public CurrentUser getCurrentUser() {
-        return null;
+        return authorizedUser;
     }
 }

@@ -18,7 +18,7 @@ public class Product {
         this.price = price;
     }
 
-    String getId() {
+    public String getId() {
         return symbol;
     }
 

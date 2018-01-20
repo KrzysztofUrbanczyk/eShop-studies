@@ -26,4 +26,15 @@ public class InMemoryBasketRepositoryTest {
 
         Assert.assertNotEquals(basket1, basket2);
     }
+
+    @Test
+    public void itGivesSameBasketForSameCustomer() {
+        BasketRepository basketRepository = new InMemoryBasketRepository();
+
+        Basket basker1 = basketRepository.getCustomerBasket("same_customer");
+        Basket basker2 = basketRepository.getCustomerBasket("same_customer");
+
+        Assert.assertEquals(basker1, basker2);
+
+    }
 }
