@@ -2,53 +2,56 @@ package pl.ecommerce.sales;
 
 import org.junit.Assert;
 import org.junit.Test;
+import pl.ecommerce.sales.basket.Basket;
+import pl.ecommerce.sales.basket.NotEnoughQuantityOnStock;
+import pl.ecommerce.sales.basket.Product;
 
-public class ReservationTest {
+public class BasketTest {
 
     @Test
     public void itIsEmptyWhenNew() {
-        Reservation reservation = new Reservation();
+        Basket basket = new Basket();
 
-        Assert.assertTrue(reservation.isEmpty());
+        Assert.assertTrue(basket.isEmpty());
     }
     @Test
     public void itAllowAddProductToBasket() {
         // arrange
         Product product = new Product("lego-1234", 10);
-        Reservation reservation = new Reservation();
+        Basket basket = new Basket();
         // act
-        reservation.add(product);
+        basket.add(product);
         //assert
-        Assert.assertFalse(reservation.isEmpty());
+        Assert.assertFalse(basket.isEmpty());
     }
 
     @Test
     public void itIncreaseQuantityWhenSameProduct() {
-        Reservation reservation = new Reservation();
+        Basket basket = new Basket();
         Product p1 = new Product("lego-1234", 10);
         Product p2 = new Product("lego-9876", 10);
 
-        reservation.add(p1);
-        reservation.add(p2);
-        reservation.add(p2);
+        basket.add(p1);
+        basket.add(p2);
+        basket.add(p2);
 
         Assert.assertTrue(
                 "Should consider product qty-ies",
-                2 == reservation.productsCount()
+                2 == basket.productsCount()
         );
 
-        Assert.assertTrue(reservation.countOfProduct("lego-9876") == 2);
+        Assert.assertTrue(basket.countOfProduct("lego-9876") == 2);
 
-        Assert.assertTrue(reservation.countOfProduct("lego-1234") == 1);
+        Assert.assertTrue(basket.countOfProduct("lego-1234") == 1);
     }
 
     @Test
     public void cantAddProductWithStockEquals0(){
-        Reservation reservation = new Reservation();
+        Basket basket = new Basket();
         Product p1 = new Product("lego-1234", 0);
 
         try {
-            reservation.add(p1);
+            basket.add(p1);
             Assert.fail("Should throw exception: NotEnoughQuantityOnStock");
         }
         catch (NotEnoughQuantityOnStock ex) {

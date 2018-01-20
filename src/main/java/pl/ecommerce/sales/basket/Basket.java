@@ -1,22 +1,21 @@
-package pl.ecommerce.sales;
-
+package pl.ecommerce.sales.basket;
 
 import java.util.HashMap;
 import java.util.Map;
 
-class Reservation {
+public class Basket {
     private Map<String, Integer> products;
 
-    Reservation() {
+    public Basket() {
         this.products = new HashMap<String, Integer>();
     }
 
-    void add(Product product) {
-        if(!product.isInStock())
+    public void add(Product product) {
+        if(!product.isInStock()) {
             throw new NotEnoughQuantityOnStock();
+        }
 
-        if (isInBasket(product))
-        {
+        if (isInBasket(product)) {
             IncrementQty(product);
         }
         else {
@@ -36,15 +35,15 @@ class Reservation {
         return products.containsKey(product.getId());
     }
 
-    boolean isEmpty() {
+    public boolean isEmpty() {
         return products.isEmpty();
     }
 
-    Integer productsCount() {
+    public Integer productsCount() {
         return products.size();
     }
 
-    Integer countOfProduct(String symbol) {
+    public Integer countOfProduct(String symbol) {
         return products.get(symbol);
     }
 }

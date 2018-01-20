@@ -1,4 +1,5 @@
-package pl.ecommerce.sales;
+package pl.ecommerce.sales.basket;
 
 public class NotEnoughQuantityOnStock extends RuntimeException {
+
 }
