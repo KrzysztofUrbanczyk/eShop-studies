@@ -2,7 +2,9 @@ package pl.ecommerce.sales.product;
 
 import pl.ecommerce.sales.basket.Product;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class InMemoryProductStore implements ProductStore {
@@ -19,5 +21,10 @@ public class InMemoryProductStore implements ProductStore {
 
     public Product get(String productId) {
         return products.get(productId);
+    }
+
+    @Override
+    public List<Product> findAll() {
+            return new ArrayList<Product>(products.values());
     }
 }

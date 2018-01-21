@@ -25,4 +25,8 @@ public class Product {
     Boolean isInStock() {
         return stockQuantity > 0;
     }
+
+    public Double getPrice() {
+        return price;
+    }
 }

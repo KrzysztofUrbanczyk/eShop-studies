@@ -2,9 +2,7 @@ package pl.ecommerce.sales;
 
 import org.junit.Assert;
 import org.junit.Test;
-import pl.ecommerce.sales.basket.Basket;
-import pl.ecommerce.sales.basket.BasketRepository;
-import pl.ecommerce.sales.basket.InMemoryBasketRepository;
+
 import pl.ecommerce.system.CurrentUser;
 import pl.ecommerce.system.InMemoryUserContext;
 import pl.ecommerce.system.UserContext;
